@@ -1,0 +1,23 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: wine_com_development
+  pool: 5
+  username: wine_com
+  password:
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: wine_com_test
+  pool: 5
+  username: wine_com
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: wine_com_production
+  pool: 5
+  username: wine_com
+  password:
