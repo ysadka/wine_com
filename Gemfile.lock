@@ -219,6 +219,9 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.38)
+    uglifier (2.4.0)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
     xpath (2.0.0)
@@ -265,5 +268,6 @@ DEPENDENCIES
   simple_form
   simplecov
   stripe
+  uglifier
   zeus (>= 0.13.4.pre2)
   zurb-foundation

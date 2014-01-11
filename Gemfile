@@ -16,6 +16,7 @@ gem 'pg'
 gem 'sass-rails'
 gem 'simple_form'
 gem 'stripe'
+gem 'uglifier'
 gem 'zurb-foundation'
 
 group :development do
