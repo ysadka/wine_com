@@ -1,4 +1,5 @@
 WineCom::Application.routes.draw do
+  root to: "users#index"
+
   devise_for :users
-  root :to => "users#index"
 end
