@@ -16,6 +16,22 @@ ActiveRecord::Schema.define(version: 20140111231401) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "addresses", force: true do |t|
+    t.string  "address1"
+    t.string  "address2"
+    t.string  "company"
+    t.string  "city"
+    t.string  "state"
+    t.integer "zip"
+  end
+
+  create_table "addresses_users", id: false, force: true do |t|
+    t.integer "address_id", null: false
+    t.integer "user_id",    null: false
+  end
+
+  add_index "addresses_users", ["address_id"], name: "index_addresses_users_on_address_id", using: :btree
+  add_index "addresses_users", ["user_id"], name: "index_addresses_users_on_user_id", using: :btree
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false

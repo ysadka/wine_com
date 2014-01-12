@@ -1,0 +1,15 @@
+%h2 New Address
+
+=simple_form_for @address do |f|
+  =f.error_notification
+
+  .form-inputs
+    =f.input :address1, :required => true, :autofocus => true
+    =f.input :address2
+    =f.input :company
+    =f.input :city,     :required => true
+    =f.input :state,    :required => true
+    =f.input :zip,      :required => true
+
+  .form-actions
+    =f.button :submit, "Add Address"
