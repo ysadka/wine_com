@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111231401) do
+ActiveRecord::Schema.define(version: 20140127010021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,26 @@ ActiveRecord::Schema.define(version: 20140111231401) do
 
   add_index "addresses_users", ["address_id"], name: "index_addresses_users_on_address_id", using: :btree
   add_index "addresses_users", ["user_id"], name: "index_addresses_users_on_user_id", using: :btree
+
+  create_table "appellations", force: true do |t|
+    t.string   "name",       null: false
+    t.integer  "region_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grapes", force: true do |t|
+    t.string   "varietal",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "regions", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -49,5 +69,29 @@ ActiveRecord::Schema.define(version: 20140111231401) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "wineries", force: true do |t|
+    t.string   "name",           null: false
+    t.integer  "appellation_id", null: false
+    t.integer  "region_id",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "wines", force: true do |t|
+    t.integer  "vintage",             null: false
+    t.integer  "winery_id",           null: false
+    t.integer  "grape_id",            null: false
+    t.integer  "alcohol_percentage"
+    t.integer  "serving_temperature"
+    t.integer  "sweetness"
+    t.integer  "acidity"
+    t.integer  "tanin"
+    t.integer  "fruit"
+    t.integer  "body"
+    t.string   "category_type",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

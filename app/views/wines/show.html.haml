@@ -1,0 +1,7 @@
+.row
+  .columns.large-12.small-12
+    %p= "This is a #{@wine.vintage} #{@wine.grape.varietal} from #{@wine.winery.name} in #{@wine.winery.appellation.name}, #{@wine.winery.region.name}"
+
+.row
+  .columns.large-12.small-12
+    =link_to "Edit Wine", edit_wine_path(@wine.id)

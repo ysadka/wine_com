@@ -4,4 +4,5 @@ WineCom::Application.routes.draw do
   devise_for :users
 
   resources :addresses, except: :show
+  resources :wines
 end

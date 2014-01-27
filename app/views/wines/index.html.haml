@@ -1,0 +1,5 @@
+.row
+  .columns.large-12.small-12
+    %ol
+      -@wines.each do |wine|
+        %li= link_to "#{wine.vintage} #{wine.grape.varietal} from #{wine.winery.name} ", wine_path(wine.id)

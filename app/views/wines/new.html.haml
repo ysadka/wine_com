@@ -1,0 +1,44 @@
+%h2 New Wine
+
+=simple_form_for @wine do |f|
+  =f.error_notification
+
+  .form-inputs
+    .row
+      .columns.large-3.small-7
+        =f.input :vintage,            required: true
+    .row
+      .columns.large-3.small-7
+        =f.association :winery,       required: true, collection: @winery_list, label_method: :name
+    .row
+      .columns.large-3.small-7
+        =f.association :grape,        required: true, collection: @grape_list, label_method: :varietal
+    .row
+      .columns.large-3.small-7
+        =f.input :alcohol_percentage
+    .row
+      .columns.large-3.small-7
+        =f.input :serving_temperature
+    .row
+      .columns.large-3.small-7
+        =f.input :sweetness
+    .row
+      .columns.large-3.small-7
+        =f.input :acidity
+    .row
+      .columns.large-3.small-7
+        =f.input :tanin
+    .row
+      .columns.large-3.small-7
+        =f.input :fruit
+    .row
+      .columns.large-3.small-7
+        =f.input :body
+    .row
+      .columns.large-3.small-7
+        =f.input :category_type,      required: true, collection: @category_list
+
+
+  .form-actions
+    .row
+      =f.button :submit, "Add Wine"
