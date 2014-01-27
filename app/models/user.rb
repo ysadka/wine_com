@@ -5,4 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_and_belongs_to_many :addresses
+  has_and_belongs_to_many :subscriptions
+  has_many :orders
+  has_many :purchases
 end
