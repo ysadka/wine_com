@@ -4,12 +4,25 @@
   =f.error_notification
 
   .form-inputs
-    =f.input :address1, :required => true, :autofocus => true
-    =f.input :address2
-    =f.input :company
-    =f.input :city,     :required => true
-    =f.input :state,    :required => true
-    =f.input :zip,      :required => true
+    .row
+      .columns.large-3.small-7
+        =f.input :address1, required: true, autofocus: true
+    .row
+      .columns.large-3.small-7
+        =f.input :address2
+    .row
+      .columns.large-3.small-7
+        =f.input :company
+    .row
+      .columns.large-3.small-7
+        =f.input :city,     required: true
+    .row
+      .columns.large-3.small-7
+        =f.input :state,    required: true
+    .row
+      .columns.large-3.small-7
+        =f.input :zip,      required: true
 
   .form-actions
-    =f.button :submit, "Add Address"
+    .row
+      =f.button :submit, "Add Address"
