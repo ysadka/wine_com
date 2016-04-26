@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Wine, 'associations' do
+  it { expect(subject).to have_many(:carts) }
   it { expect(subject).to belong_to(:winery) }
   it { expect(subject).to belong_to(:grape) }
 end

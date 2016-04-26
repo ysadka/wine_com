@@ -71,7 +71,8 @@ p 'Creating Wines'
     tanin:                rand(9),
     fruit:                rand(9),
     body:                 rand(9),
-    category_type:        type[rand(4)]
+    category_type:        type[rand(4)],
+    price:                rand(4..400)
     )
 end
 

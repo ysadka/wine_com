@@ -2,6 +2,8 @@ class Wine < ActiveRecord::Base
   belongs_to :winery
   belongs_to :grape
 
+  has_many :carts
+
   validates :vintage,       presence: true
   validates :winery_id,     presence: true
   validates :grape_id,      presence: true

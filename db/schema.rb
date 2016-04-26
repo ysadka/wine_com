@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127010021) do
+ActiveRecord::Schema.define(version: 20140208234416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,17 +40,77 @@ ActiveRecord::Schema.define(version: 20140127010021) do
     t.datetime "updated_at"
   end
 
+  create_table "carts", id: false, force: true do |t|
+    t.integer  "wine_id",    null: false
+    t.integer  "user_id",    null: false
+    t.integer  "quantity",   null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "carts", ["user_id"], name: "index_carts_on_user_id", using: :btree
+  add_index "carts", ["wine_id"], name: "index_carts_on_wine_id", using: :btree
+
+  create_table "club_orders", id: false, force: true do |t|
+    t.integer  "purchase_id", null: false
+    t.integer  "user_id",     null: false
+    t.boolean  "fulfilled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "club_orders", ["purchase_id"], name: "index_club_orders_on_purchase_id", using: :btree
+  add_index "club_orders", ["user_id"], name: "index_club_orders_on_user_id", using: :btree
+
   create_table "grapes", force: true do |t|
     t.string   "varietal",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  create_table "orders", id: false, force: true do |t|
+    t.integer  "purchase_id", null: false
+    t.integer  "user_id",     null: false
+    t.boolean  "fulfilled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "orders", ["purchase_id"], name: "index_orders_on_purchase_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
+  create_table "purchases", id: false, force: true do |t|
+    t.integer  "wine_id",    null: false
+    t.integer  "user_id",    null: false
+    t.integer  "quantity"
+    t.boolean  "fulfilled"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "purchases", ["user_id"], name: "index_purchases_on_user_id", using: :btree
+  add_index "purchases", ["wine_id"], name: "index_purchases_on_wine_id", using: :btree
+
   create_table "regions", force: true do |t|
     t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "subscriptions", force: true do |t|
+    t.string   "name"
+    t.integer  "monthly_cost"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subscriptions_users", id: false, force: true do |t|
+    t.integer "subscription_id", null: false
+    t.integer "user_id",         null: false
+  end
+
+  add_index "subscriptions_users", ["subscription_id"], name: "index_subscriptions_users_on_subscription_id", using: :btree
+  add_index "subscriptions_users", ["user_id"], name: "index_subscriptions_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -92,6 +152,7 @@ ActiveRecord::Schema.define(version: 20140127010021) do
     t.string   "category_type",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "price",               null: false
   end
 
 end
